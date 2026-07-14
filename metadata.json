@@ -1,0 +1,6 @@
+{
+  "name": "MrBaig Downloader",
+  "description": "A fully-featured, client-side, offline-first media downloader powered by on-device yt-dlp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
