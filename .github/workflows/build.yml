@@ -49,6 +49,10 @@ jobs:
           # 3. Unhide the raw error messages for future debugging
           sed -i 's/else -> "Download failed. Please check the URL and try again."/else -> "Raw Error: $raw"/g' app/src/main/java/com/mrbaigsdownloader/utils/DownloadEngine.kt
 
+      # --- NEW FIX ADDED HERE: Automatically creates the missing wrapper file ---
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper
+
       - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace
         env:
