@@ -2,14 +2,13 @@ package com.mrbaigsdownloader
 
 import android.app.Application
 import android.util.Log
-import androidx.multidex.MultiDexApplication
 import com.yausername.youtubedl_android.YoutubeDL
 import com.yausername.youtubedl_android.YoutubeDLException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MrBaigApp : MultiDexApplication() {
+class MrBaigApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
