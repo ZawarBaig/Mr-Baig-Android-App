@@ -20,22 +20,13 @@ android {
         }
     }
 
-    signingConfigs {
-        debugConfig {
-            storeFile file("${rootDir}/debug.keystore")
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.debugConfig
+            // Configuration removed so Android uses its automatic default keystore
         }
     }
 
@@ -60,7 +51,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
     implementation 'androidx.fragment:fragment-ktx:1.6.2'
-    implementation 'androidx.multidex:multidex:2.0.1'
+    // Note: Multidex dependency removed as it is not needed for minSdk >= 21
 
     // Room Database
     implementation 'androidx.room:room-runtime:2.6.1'
@@ -70,7 +61,7 @@ dependencies {
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
-    // youtubedl-android
-    implementation 'com.github.yausername.youtubedl-android:library:0.14.0'
-    implementation 'com.github.yausername.youtubedl-android:ffmpeg:0.14.0'
+ // youtubedl-android (JunkFood02 Fork - actively maintained)
+    implementation 'io.github.junkfood02.youtubedl-android:library:0.18.1'
+    implementation 'io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1'
 }
