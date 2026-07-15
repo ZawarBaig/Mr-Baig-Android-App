@@ -40,7 +40,8 @@ jobs:
         run: |
           # 1. Update Group ID and Version to the new Maven Central library (Fixes Python 3.10+ issue)
           sed -i 's/com.github.yausername.youtubedl-android/io.github.junkfood02.youtubedl-android/g' app/build.gradle
-          sed -i 's/0.17.+/0.18.1/g' app/build.gradle
+          # -> FIXED: Now correctly targets version 0.14.0 to upgrade it to 0.18.1
+          sed -i 's/0.14.0/0.18.1/g' app/build.gradle
           
           # 2. Patch Kotlin code to bypass the permanently removed 'removeOption' function
           sed -i 's/addOption("--no-playlist")/\/\/addOption("--no-playlist")/g' app/src/main/java/com/mrbaigsdownloader/utils/DownloadEngine.kt
@@ -49,7 +50,6 @@ jobs:
           # 3. Unhide the raw error messages for future debugging
           sed -i 's/else -> "Download failed. Please check the URL and try again."/else -> "Raw Error: $raw"/g' app/src/main/java/com/mrbaigsdownloader/utils/DownloadEngine.kt
 
-      # --- NEW FIX ADDED HERE: Automatically creates the missing wrapper file ---
       - name: Generate Gradle Wrapper
         run: gradle wrapper
 
